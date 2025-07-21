@@ -751,7 +751,7 @@ background: linear-gradient(rgb(10, 10, 255),rgb(203, 11, 242));
 
         async function updateTables() {
             try {
-                const response = await fetch('http://44.223.23.145:3407/api/claims');
+                const response = await fetch('http://13.51.199.172:3407/api/claims');
                 const claims = await response.json();
 
                 const pendingTableBody = document.querySelector('#pendingTable tbody');
@@ -894,7 +894,7 @@ background: linear-gradient(rgb(10, 10, 255),rgb(203, 11, 242));
             if (!confirmed) return;
 
             try {
-                const response = await fetch(`http://44.223.23.145:3407/api/claims/${claimId}`, {
+                const response = await fetch(`http://13.51.199.172:3407/api/claims/${claimId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -919,8 +919,8 @@ background: linear-gradient(rgb(10, 10, 255),rgb(203, 11, 242));
         async function viewClaim(claimId) {
             try {
                 const [claimResponse, documentsResponse] = await Promise.all([
-                    fetch(`http://44.223.23.145:3407/api/claims?claim_id=${claimId}`),
-                    fetch(`http://44.223.23.145:3407/api/claims/${claimId}/documents`)
+                    fetch(`http://13.51.199.172:3407/api/claims?claim_id=${claimId}`),
+                    fetch(`http://13.51.199.172:3407/api/claims/${claimId}/documents`)
                 ]);
 
                 const claims = await claimResponse.json();
@@ -993,14 +993,14 @@ detailsDiv.innerHTML = `
         async function downloadDocument(documentId, fileName) {
             try {
                 // First get the file path from the server
-                const response = await fetch(`http://44.223.23.145:3407/api/documents/${documentId}`);
+                const response = await fetch(`http://13.51.199.172:3407/api/documents/${documentId}`);
                 
                 if (!response.ok) {
                     throw new Error('Failed to download document');
                 }
 
                 // Create a temporary anchor element to trigger the download
-                const url = `http://44.223.23.145:3407/api/documents/${documentId}`;
+                const url = `http://13.51.199.172:3407/api/documents/${documentId}`;
                 const a = document.createElement('a');
                 a.href = url;
                 a.download = fileName;

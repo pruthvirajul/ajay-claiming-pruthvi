@@ -41,7 +41,7 @@ const pool = new Pool({
     user: 'postgres',
     host: 'postgres',
     database: 'new_employee_db',
-    password: 'admin123', 
+    password: 'admin321', 
     port: 5432
 });
 
@@ -401,7 +401,7 @@ app.use((err, req, res, next) => {
 
 // Start server
 const PORT = 3407;
-const HOST = '0.0.0.0'; // Listen on all interfaces
+const HOST = '13.51.199.172'; // Listen on all interfaces
 
 app.listen(PORT, HOST, async () => {
     console.log(`Server running on http://${HOST}:${PORT}`);

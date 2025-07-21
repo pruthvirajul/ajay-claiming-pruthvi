@@ -1224,7 +1224,7 @@
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-                const response = await fetch('http://44.223.23.145:3407/api/claims', {
+                const response = await fetch('http://13.51.199.172:3407/api/claims', {
                     method: 'POST',
                     body: formData,
                     signal: controller.signal,
@@ -1282,13 +1282,13 @@
                 
                 try {
                     const empId = document.getElementById('empId').value.trim();
-                    let claimsResponse = await fetch(`http://44.223.23.145:3407/api/claims`, {
+                    let claimsResponse = await fetch(`http://13.51.199.172:3407/api/claims`, {
                         headers: { 'Accept': 'application/json' },
                         mode: 'cors'
                     });
                     let claims = await claimsResponse.json();
                     if (!claimsResponse.ok || !Array.isArray(claims)) {
-                        claimsResponse = await fetch(`http://44.223.23.145:3407/api/claims?employee_id=${empId}`, {
+                        claimsResponse = await fetch(`http://13.51.199.172:3407/api/claims?employee_id=${empId}`, {
                             headers: { 'Accept': 'application/json' },
                             mode: 'cors'
                         });
@@ -1392,7 +1392,7 @@
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 30000);
                 
-                const response = await fetch(`http://44.223.23.145:3407/api/claims?employee_id=${empId}`, {
+                const response = await fetch(`http://13.51.199.172:3407/api/claims?employee_id=${empId}`, {
                     signal: controller.signal,
                     headers: { 'Accept': 'application/json' },
                     mode: 'cors'
@@ -1443,12 +1443,12 @@
                 const timeoutId = setTimeout(() => controller.abort(), 30000);
                 
                 const [claimResponse, documentsResponse] = await Promise.all([
-                    fetch(`http://44.223.23.145:3407/api/claims?claim_id=${claimId}`, { 
+                    fetch(`http://13.51.199.172:3407/api/claims?claim_id=${claimId}`, { 
                         signal: controller.signal, 
                         headers: { 'Accept': 'application/json' }, 
                         mode: 'cors' 
                     }),
-                    fetch(`http://44.223.23.145:3407/api/claims/${claimId}/documents`, { 
+                    fetch(`http://13.51.199.172:3407/api/claims/${claimId}/documents`, { 
                         signal: controller.signal, 
                         headers: { 'Accept': 'application/json' }, 
                         mode: 'cors' 
@@ -1498,7 +1498,7 @@
                     <p><strong>Description:</strong> ${claim.description}</p>
                     <p><strong>Status:</strong> ${claim.status.charAt(0).toUpperCase() + claim.status.slice(1)}</p>
                     <p><strong>Documents:</strong></p>
-                    ${documents.map(doc => `<p><a href="http://44.223.23.145:3407/uploads/${doc.file_path}" target="_blank">${doc.file_name}</a></p>`).join('')}
+                    ${documents.map(doc => `<p><a href="http://13.51.199.172:3407/uploads/${doc.file_path}" target="_blank">${doc.file_name}</a></p>`).join('')}
                 `;
 
                 document.getElementById('detailsModal').style.display = 'flex';
