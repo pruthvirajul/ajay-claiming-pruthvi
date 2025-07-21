@@ -401,15 +401,20 @@ app.use((err, req, res, next) => {
 
 // Start server
 const PORT = 3407;
-const HOST = '13.51.199.172'; // Listen on all interfaces
+const HOST = '0.0.0.0'; // Listen on all interfaces in Docker
 
-app.listen(PORT, HOST, async () => {
-    console.log(`Server running on http://${HOST}:${PORT}`);
+async function startServer() {
+  app.listen(PORT, HOST, async () => {
+    console.log(`Server running at http://${HOST}:${PORT}`);
+
     try {
-        await initializeDatabase();
-        console.log('Database initialization complete');
+      await initializeDatabase();
+      console.log('Database initialization complete');
     } catch (error) {
-        console.error('Failed to initialize database:', error);
-        process.exit(1);
+      console.error('Failed to initialize database:', error);
+      process.exit(1);
     }
-});
+  });
+}
+
+startServer();
